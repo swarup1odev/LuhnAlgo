@@ -1,0 +1,21 @@
+{
+    "name": "developer/luhn-algorithm",
+    "description": "A program to generate and validate credit card or debit card using Lunh Algorithm",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Swarup Saha",
+            "email": "swarup@1osolutions.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "LuhnAlgorithm\\": "src/"
+        }
+    },
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "9.3"
+    }
+}
