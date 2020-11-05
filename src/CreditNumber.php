@@ -1,8 +1,11 @@
 <?php
-
+declare(strict_types=1);
 
 namespace LuhnAlgorithm;
-use http\Exception\InvalidArgumentException;
+
+
+
+use InvalidArgumentException;
 
 /**
  * Class CreditNumber
@@ -12,21 +15,19 @@ use http\Exception\InvalidArgumentException;
 class CreditNumber
 
 {
-    public function numberGenerate( int $prefix=487, int $length=16 ): int
+    public function numberGenerate( int $prefix, int $length ): string
     {
-      if ( $length <= $prefix ) {
+        $prefixLength = 3;
+        if ( $length <= $prefixLength ) {
           throw new InvalidArgumentException("Invalid Number");
-      }
-      $array = [];
-      $prefixLength = 3;
-      array_push($array,$prefix);
-      for ( $i = $prefixLength-1; $i <= $length-1; $i++ ) {
+        }
+        $array = str_split((string)$prefix);
+        for ( $i = $prefixLength; $i <= $length-2; $i++ ) {
           array_push($array, mt_rand(0,9));
-      }
-
-      $flag = true;
-      $sum = 0;
-      for ( $k = count($array)-1; $k >= 0; $k-- ) {
+        }
+        $flag = true;
+        $sum = 0;
+        for ( $k = count($array)-1; $k >= 0; $k-- ) {
             $temp = $array[$k];
             if ($flag === true) {
                 $temp *= 2;
@@ -37,8 +38,8 @@ class CreditNumber
             }
             $sum += $temp;
         }
-      $lastDigit = 10 - ($sum % 10);
-      array_push($array,$lastDigit);
-      return implode('',$array);
-    }
+        $lastDigit = 10 - ($sum % 10);
+        array_push($array,$lastDigit);
+        return implode('',$array);
+        }
 }
