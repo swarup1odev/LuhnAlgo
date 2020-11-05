@@ -38,7 +38,7 @@ class CreditNumber
             }
             $sum += $temp;
         }
-        $lastDigit = 10 - ($sum % 10);
+        $lastDigit = (10 - ($sum % 10)) % 10;
         array_push($array,$lastDigit);
         return implode('',$array);
         }

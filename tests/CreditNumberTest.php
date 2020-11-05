@@ -10,6 +10,7 @@ class CreditNumberTest extends TestCase
     {
         $object = new CreditNumber();
         $cardNumber = $object->numberGenerate(487,16);
+        echo $cardNumber;
         //$this->assertStringStartsWith("7", $cardNumber);
         $this->assertSame(16, strlen($cardNumber));
         //$this->assertSame(16, $object->numberGenerate());
